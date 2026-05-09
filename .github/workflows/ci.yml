@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       # Docker login only when deployment enabled
       - name: Login to Docker Hub
@@ -24,7 +24,7 @@ jobs:
 
       # Backend Image Build & Push
       - name: Build and Push Backend
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v4
         with:
           context: ./backend
           push: ${{ vars.DEPLOY_ENABLED == 'true' }}
@@ -32,7 +32,7 @@ jobs:
 
       # Frontend Image Build & Push
       - name: Build and Push Frontend
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v4
         with:
           context: ./frontend
           push: ${{ vars.DEPLOY_ENABLED == 'true' }}
